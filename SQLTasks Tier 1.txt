@@ -227,7 +227,7 @@ ORDER BY Used_Slots DESC
 
 /* Q13: Find the facilities usage by month, but not guests */
 
-SELECT EXTRACT(MONTH FROM b.starttime) AS Month, f.name AS Facility_Name, SUM(b.slots) AS Used_Slots
+SELECT strftime('%m', date(b.starttime)) AS Month, f.name AS Facility_Name, SUM(b.slots) AS Used_Slots
 FROM Bookings AS b
 LEFT JOIN Facilities AS f
 ON b.facid = f.facid
